@@ -1,0 +1,14 @@
+:root {
+  color-scheme: light-dark;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  background-color: lightblue;
+}
+
+h1 {
+  color: navy;
+  margin-left: 20px;
+}
