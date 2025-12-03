@@ -10,15 +10,21 @@ Copy the .env file from the source machine to the destination machine. This file
 
 Install Dependencies:
 Navigate to the project directory on the destination computer and run composer install to download and install all required PHP dependencies listed in the composer.json file.
- This step is essential as the vendor directory, which contains these dependencies, is typically excluded from version control (e.g., in the .gitignore file).
+This step is essential as the vendor directory, which contains these dependencies, is typically excluded from version control (e.g., in the .gitignore file).
 
- Generate Application Key: Run the command php artisan key:generate to create a new application key. This key is used for encrypting user sessions and other data.
+Generate Application Key:
+Run the command php artisan key:generate to create a new application key. This key is used for encrypting user sessions and other data.
 
-Clear Caches: Run php artisan cache:clear to clear any cached configuration and routes that might be specific to the original environment.
+Clear Caches:
+Run php artisan cache:clear to clear any cached configuration and routes that might be specific to the original environment.
 Set Up Storage Link (if needed): If your application uses the storage directory for files (like uploaded images), you may need to create a symbolic link from public/storage to storage/app/public using the command php artisan storage:link.
 
-Configure the Database: Ensure the database server is running on the destination machine. Create a new database with the same name as specified in the .env file. If you are migrating an existing project, you will also need to export the database from the source machine (e.g., using mysqldump or phpMyAdmin) and import it into the new database on the destination machine.
+Configure the Database:
+Ensure the database server is running on the destination machine. Create a new database with the same name as specified in the .env file. If you are migrating an existing project, you will also need to export the database from the source machine (e.g., using mysqldump or phpMyAdmin) and import it into the new database on the destination machine.
 
-Run Migrations (if applicable): If your project has database migrations, run php artisan migrate to set up the database schema on the new machine.
-Start the Development Server: Finally, start the Laravel development server using php artisan serve.
- By default, it runs on http://127.0.0.1:8000. To allow access from other devices on the same network, use the --host option with your machine's local IP address (e.g., php artisan serve --host 192.168.1.101 --port 8000).
+Run Migrations (if applicable):
+If your project has database migrations, run php artisan migrate to set up the database schema on the new machine.
+
+Start the Development Server:
+Finally, start the Laravel development server using php artisan serve.
+By default, it runs on http://127.0.0.1:8000. To allow access from other devices on the same network, use the --host option with your machine's local IP address (e.g., php artisan serve --host 192.168.1.101 --port 8000).

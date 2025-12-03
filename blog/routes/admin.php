@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/admin',function(){
-  
-    /* return "Esta es la pagina de ADMIN"; */ 
-  
+/* Route::get('/',function(){
   return view('admin');
-})->name('admin');
+}); */
+
+
+Route::resource('categories', CategoryController::class);  // Creamos un recurso llamado categories y quien lo controla
