@@ -12,13 +12,13 @@
     <table class="w-full text-sm text-left rtl:text-right text-body">
       <thead class="text-sm text-body bg-neutral-secondary-soft">
         <tr>
-          <th scope="col" class="px-6 py-3 font-medium">
+          <th scope="col" class="px-6 py-3">
             ID
           </th>
-          <th scope="col" class="px-6 py-3 font-medium">
+          <th scope="col" class="px-6 py-3">
             Name
           </th>
-          <th scope="col" class="px-6 py-3 font-medium">
+          <th scope="col" class="px-6 py-3" width="10px">
             Edit
           </th>
         </tr>
@@ -26,13 +26,16 @@
       <tbody>
         @foreach($categories as $category)
           <tr class="bg-neutral-primary">
-            <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+            <th scope="row" class="px-6 py-4 text-heading whitespace-nowrap">
               {{$category->id}}
             </th>
             <td class="px-6 py-4">
               {{$category->name}}
             </td>
             <td class="px-6 py-4">
+              <a href="{{route('admin.categories.edit',$category)}}" class="btn text-xs bg-amber-500">
+                Editar
+              </a>
             </td>
           </tr>
         @endforeach

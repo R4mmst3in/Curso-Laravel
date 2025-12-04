@@ -63,7 +63,7 @@ class CategoryController extends Controller
    */
   public function edit(Category $category)
   {
-      //
+    return view('admin.categories.edit', compact('category'));
   }
 
   /**
@@ -71,7 +71,30 @@ class CategoryController extends Controller
    */
   public function update(Request $request, Category $category)
   {
-      //
+      /*
+      return $request->all();
+      */
+
+      // Validaciones de los datos que hemos introducido
+      $data = $request->validate (
+        [
+          'id'=>'required|int',
+          'name' => 'required|string|min:3|max:255',
+        ]
+      );
+      
+      // Actualizamos $category con el metodo update y el contenido de $data
+      $category->update($data);
+
+      // Creamos una sesion flash para controlar que aparezca el alert en sidebar.blade.php
+
+      session()->flash('session_flash',[
+        'title' => "Bien hecho!!!",
+        'icon' => "success",
+        'text' => "Categoria actualizada",
+      ]);
+
+      return redirect()->route('admin.categories.edit',$category);
   }
 
   /**
